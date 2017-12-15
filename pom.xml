@@ -192,7 +192,7 @@
                 </executions>
             </plugin>
             
-            <!-- 
+      
             <plugin>
 
                 <groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -215,8 +215,7 @@
                     <value>${project.version}</value>
                 </configuration>
             </plugin>
-            -->
-            
+           
             
             <plugin><!-- Using jdk 1.5.0_22, package-info.java files are compiled correctly. -->
                 <!--
@@ -262,18 +261,23 @@
                     </execution>
                 </executions>
             </plugin>
+      
+            
+            
             <plugin>
-                <!--
-                A plugin which uses the JUnit framework in order to start
-                our junit suite "AllTests" after the sources are compiled.
-                -->
+
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefireVersion}</version>
                 <configuration>
                     <test>org/junit/tests/AllTests.java</test>
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <enableAssertions>false</enableAssertions>
+                    
+                    <testFailureIgnore>true</testFailureIgnore>
+                    
                 </configuration>
+                
+                
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
@@ -282,6 +286,8 @@
                     </dependency>
                 </dependencies>
             </plugin>
+                     
+            
             <plugin>
                 <!--
                 This plugin can package the main artifact's sources (src/main/java)
